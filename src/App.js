@@ -6,9 +6,10 @@ import B from './components/D';
 
 export const usercon=React.createContext()
 function App() {
-  const ini=0;
+  // const ini=0;
   
-  const reducer = (state, action)=>{
+  
+  const [count, operate] = useReducer((state, action)=>{
     if(action.choice==="inc"){
       return state+1
     }
@@ -18,14 +19,12 @@ function App() {
     if(action.choice==="reset"){
       return 0
     }
-  }
-  
-  const [count, operate] = useReducer(reducer, ini)
+  }, 0)
 
   return (
     <div className="App">
       <h1>Count : {count}</h1>
-      <usercon.Provider value={operate}>
+      <usercon.Provider value={{f1:operate, name:"hii"}}>
       <A />
       <br />
       <B />
